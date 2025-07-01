@@ -16,7 +16,8 @@ function getLocation() {
 }
 
 function getWeather(lat, lon) {
-    console.log(`${lat}, ${lon}`)
+    console.log(`${lat}, ${lon}`);
+
     fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`)
         .then((response) => response.json())
         .then((responseObj) => updateWeather(responseObj))
@@ -25,4 +26,15 @@ function getWeather(lat, lon) {
 
 function updateWeather(obj) {
     console.log(obj);
+
+    const date = new Date();
+    document.getElementById("currentTime").textContent = `${date.getHours()}:${date.getMinutes()}`;
+    document.getElementById("currentTemperature").textContent = `${obj.main.temp}\u00B0C`;
+    document.getElementById("weatherSummary").textContent = obj.weather[0].main;
+    document.getElementById("feelsLikeTemperature").textContent = `Feels like ${obj.main.feels_like}\u00B0C`;
+    document.getElementById("weatherDescription").textContent = `${obj.weather[0].description}. The high will be ${obj.main.temp_max}\u00B0C`;
+    document.getElementById("windSpeed").textContent = `${Number.parseFloat(obj.wind.speed).toFixed(1)} km/h`;
+    document.getElementById("humidity").textContent = `${obj.main.humidity}%`;
+    document.getElementById("visibility").textContent = `${Number.parseFloat(obj.visibility/1000).toFixed(1)}km`;
+    document.getElementById("pressure").textContent = `${obj.main.pressure}hPa`;
 }
