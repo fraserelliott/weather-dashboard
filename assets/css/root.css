@@ -532,18 +532,10 @@ input {
  .flex-item {
     width: 280px; /* Increased from 200px */
     text-align: center;
-}
-
-.cardjb {
-    width: 100%;
-    height: 300px; /* Increased height */
-    margin: 0 auto;
-    border-radius: 15px; /* More rounded corners */
-}
-
-.icons-style img {
-    height: 150px; /* Increased from 120px */
-    width: 150px;  /* Increased from 120px */
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    background-color: var(--backgrd-color);
 }
 
 .carousel-indicators {
