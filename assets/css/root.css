@@ -313,6 +313,11 @@ body {
 
 .icons-style img {
 	box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.3);
+    height: 120px;
+    width: 120px;
+    border-radius: 70%;
+    border: 2px solid rgb(43, 153, 180);
+    margin-bottom: 60px;
 }
 
 /* Add hover effect on icons in cards */
