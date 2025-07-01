@@ -10,3 +10,22 @@
 .justify-between {
     justify-content: space-between;
 }
+
+.erroralert {
+    position: fixed;
+    top: 150px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    background-color: #f44336;
+    color: white;
+    padding: 16px 24px;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    transition: opacity 0.15s ease-out;
+    opacity: 0.8;
+}
+
+.erroralert.hide {
+    opacity: 0;
+}
