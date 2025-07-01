@@ -9,36 +9,34 @@
 </head>
 
 <body>
-    <div id="currentWeather">
+    <div id="currentWeather" class="flexbox column">
+        <h1>Current Weather</h1>
         <p id="currentTime">14:55</p>
-        <h1 id="currentTemperature">32&deg;C</h1>
-        <h2 id="weatherSummary">Partly Sunny</h2>
-        <p id="feelsLikeTemperature">Feels like 35&deg</p>
-        <p id="weatherDescription">There will mostly be sunny skies. The high will be 32&deg.</p>
-        <div id="currentWeatherRow">
-            <div class="currentWeatherBlock">
-                <p>Pollen</p>
-                <p id="pollen">High</p>
+        <div class="flexbox">
+            <img id="weatherIcon" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyp3I4d1dyUilENcDxwqKHMwcnFrAOq-BBvg&s" height="100px">
+            <h1 id="currentTemperature">32&deg;C</h1>
+            <div class="flexbox column">
+                <h2 id="weatherSummary">Partly Sunny</h2>
+                <p id="feelsLikeTemperature">Feels like 35&deg</p>
             </div>
-            <div class="currentWeatherBlock">
+        </div>
+        <p id="weatherDescription">There will mostly be sunny skies. The high will be 32&deg.</p>
+        <div id="currentWeatherRow" class="flexbox justify-between">
+            <div class="flexbox column">
                 <p>Wind</p>
                 <p id="windSpeed">16 km/h</p>
             </div>
-            <div class="currentWeatherBlock">
+            <div class="flexbox column">
                 <p>Humidity</p>
                 <p id="humidity">44%</p>
             </div>
-            <div class="currentWeatherBlock">
+            <div class="flexbox column">
                 <p>Visibility</p>
                 <p id="visibility">10km</p>
             </div>
-            <div class="currentWeatherBlock">
+            <div class="flexbox column">
                 <p>Pressure</p>
                 <p id="pressure">1013 mb</p>
-            </div>
-            <div class="currentWeatherBlock">
-                <p>Dew Point</p>
-                <p id="dewPoint">19&deg</p>
             </div>
         </div>
     </div>

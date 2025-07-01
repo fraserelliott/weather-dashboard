@@ -1,11 +1,12 @@
-#currentWeatherRow {
+.flexbox {
     display: flex;
-    flex-direction: row;
     border: 1px solid black;
 }
 
-.currentWeatherBlock {
-    display: flex;
+.column {
     flex-direction: column;
-    border: 1px solid black;
+}
+
+.justify-between {
+    justify-content: space-between;
 }
