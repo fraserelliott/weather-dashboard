@@ -543,6 +543,36 @@ input {
     margin-top: 20px;
 }
 
+.weather-card {
+    width: 18rem;
+    margin: 0 10px;
+}
+
+.cardir {
+    width: 100%;
+    height: 350px;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 0px;
+    
+    background: var(--secondary-color);
+}
+
+.weekDay {
+    position: relative;
+    margin-bottom: -20px;
+	top: 215px;
+	left: 0;
+	background: var(--secondary-color);
+	z-index: 4;
+	width: 100%;
+	height: 0px;
+	font-size: 16px;
+	font-family: var(--ffamily);
+	color: rgb(151, 147, 147);
+	font-weight: bold
+}
+
 /* Responsive layout - makes branded logo smaller when size of screen is reduced */
 @media (max-width: 390px) {
 	.main-nav ul {
