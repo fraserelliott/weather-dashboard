@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Weather Dashboard</title>
+	<!--This will adjust view width to device size-->
+	<meta name="viewport" content="width=device-width">
+	<meta charset="UTF-8">
+
+	<!--link rel="stylesheet" href="styles/reset.css"-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="assets/css/root.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+		integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+</head>
+
+<body id="landingPage" data-target=".navbar" data-offset="60">
+
+	<!------------------------------------------- CONTAINER (TEAM PORTALS) -------------------------------------------------------------->
+	<header>
+
+		<br><br><br><br>
+
+		<div class="flex-container1">
+			<!---- CARD 1 -->
+			<div class="flex-item">
+				<p class="deets">Current Day</p>
+				<div class="cardjb" style="background:#2fc7cd;">
+
+					<div id="currentWeather">
+						<p id="currentTime">14:55</p>
+						<h1 id="currentTemperature">32&deg;C</h1>
+						<h2 id="weatherSummary">Partly Sunny</h2>
+						<p id="feelsLikeTemperature">Feels like 35&deg</p>
+						<p id="weatherDescription">There will mostly be sunny skies. The high will be 32&deg.</p>
+						<div id="currentWeatherRow">
+							<div class="currentWeatherBlock">
+								<p>Pollen</p>
+								<p id="pollen">High</p>
+							</div>
+							<div class="currentWeatherBlock">
+								<p>Wind</p>
+								<p id="windSpeed">16 km/h</p>
+							</div>
+							<div class="currentWeatherBlock">
+								<p>Humidity</p>
+								<p id="humidity">44%</p>
+							</div>
+							<div class="currentWeatherBlock">
+								<p>Visibility</p>
+								<p id="visibility">10km</p>
+							</div>
+							<div class="currentWeatherBlock">
+								<p>Pressure</p>
+								<p id="pressure">1013 mb</p>
+							</div>
+							<div class="currentWeatherBlock">
+								<p>Dew Point</p>
+								<p id="dewPoint">19&deg</p>
+							</div>
+						</div>
+					</div>
+
+					<div id="submit-field">
+						<label for="locationInput">Enter location:</label>
+						<input id="locationInput">
+						<button id="submitBtn">Submit</button>
+					</div>
+					<script src="/assets/scripts/weatherdashboard.js"></script>
+				</div>
+			</div>
+		</div>
+	</header>
+    
+    <br><br><br><br>
+  
+    <section>
+        <div id="weatherCarousel" class="carousel slide">
+            <div class="carousel-inner">
+                <!-- CARD 1 -->
+                <div class="carousel-item active">
+                    <div class="d-flex justify-content-center">
+                        <div class="flex-item">
+                            <p class="deets">Monday</p>
+                            <div class="cardjb">
+                                <div class="icons-style" style="padding-top: 0%">
+                                        <a href="store.html"><img src="images/sm-sun-clouds.png"
+                                            style="height: 120px; width: 120px; border-radius: 70%; border: 2px solid rgb(43, 153, 180); margin: 0%; bottom: 10px; left: 0; margin-bottom: 60px; padding-top:0px" alt="Mon"></a>
+                                </div>
+                                <div style="text-align: center; margin-top: 10px;">
+                                    <p>High: 30°C</p>
+                                    <p>Low: 22°C</p>
+                                    <p>Humidity: 45%</p>
+                                    <p>Wind: 12 km/h</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- CARD 2 -->
+                <div class="carousel-item">
+                    <div class="d-flex justify-content-center">
+                        <div class="flex-item">
+                            <p class="deets">Tuesday</p>
+                            <div class="cardjb">
+                                <div class="icons-style" style="padding-top: 0%">
+                                    <a href="events.html"><img src="images/sm-sun-clouds.png"
+                                            style="height: 120px; width: 120px; border-radius: 70%; border: 2px solid rgb(43, 153, 180); margin: 0%; bottom: 10px; left: 0; margin-bottom: 60px; padding-top:0px" alt="Tue"></a>
+                                </div>
+                            <div style="text-align: center; margin-top: 10px;">
+                                <p>High: 30°C</p>
+                                <p>Low: 22°C</p>
+                                <p>Humidity: 45%</p>
+                                <p>Wind: 12 km/h</p>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <!--CARD 3-->
+                <div class="carousel-item">
+                    <div class="d-flex justify-content-center">
+                        <div class="flex-item">
+                            <p class="deets">Wednesday</p>
+                            <div class="cardjb">
+                                <div class="icons-style" style="padding-top: 0%">
+                                    <a href="archives.html"><img src="images/sm-sun-clouds.png"
+                                            style="height: 120px; width: 120px; border-radius: 90%; border: 2px solid rgb(43, 153, 180); margin: 0%; bottom: 10px; left: 0; margin-bottom: 60px; padding-top:0px" alt="Wed"></a>
+                                </div>
+                                <div style="text-align: center; margin-top: 10px;">
+                                    <p>High: 30°C</p>
+                                    <p>Low: 22°C</p>
+                                    <p>Humidity: 45%</p>
+                                    <p>Wind: 12 km/h</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- CARD 4 -->
+                <div class="carousel-item">
+                    <div class="d-flex justify-content-center">
+                        <div class="flex-item">
+                            <p class="deets">Thursday</p>
+                            <div class="cardjb">
+                                <div class="icons-style" style="padding-top: 0%">
+                                    <a href="archives.html"><img src="images/sm-sun-clouds.png"
+                                            style="height: 120px; width: 120px; border-radius: 90%; border: 2px solid rgb(43, 153, 180); margin: 0%; bottom: 10px; left: 0; margin-bottom: 60px; padding-top:0px" alt="Thu"></a>
+                                </div>
+                                <div style="text-align: center; margin-top: 10px;">
+                                    <p>High: 30°C</p>
+                                    <p>Low: 22°C</p>
+                                    <p>Humidity: 45%</p>
+                                    <p>Wind: 12 km/h</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- CARD 5 -->
+                <div class="carousel-item">
+                    <div class="d-flex justify-content-center">
+                        <div class="flex-item">
+                            <p class="deets">Friday</p>
+                            <div class="cardjb">
+                                <div class="icons-style" style="padding-top: 0%">
+                                    <a href="archives.html"><img src="images/sm-sun-clouds.png"
+                                            style="height: 120px; width: 120px; border-radius: 90%; border: 2px solid rgb(43, 153, 180); margin: 0%; bottom: 10px; left: 0; margin-bottom: 60px; padding-top:0px" alt="Fri"></a>
+                                </div>
+                                <div style="text-align: center; margin-top: 10px;">
+                                    <p>High: 30°C</p>
+                                    <p>Low: 22°C</p>
+                                    <p>Humidity: 45%</p>
+                                    <p>Wind: 12 km/h</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Carousel Buttons -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#weatherCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#weatherCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </button>
+        </div>
+    
+        <!-- Carousel Indicators  -->
+        <div class="text-center mt-3">
+        <div class="carousel-indicators" style="position: static; display: inline-block;">
+            <button type="button" data-bs-target="#weatherCarousel" class="active" aria-current="true" data-bs-slide-to="0"></button>
+            <button type="button" data-bs-target="#weatherCarousel" data-bs-slide-to="1"></button>
+        </div>
+    </section>
+    <br><br><br><br><br>
+
+    <footer>
+        <p>&copy; 2025 The Institute of Coders. All rights reserved</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
