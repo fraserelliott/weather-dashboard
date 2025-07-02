@@ -361,9 +361,9 @@ body {
 	padding-top: 28px
 }
 
-.active {
+/*.active {
 	background-color: #3674b6;
-}
+} - to discuss with team whether can remove*/
 
 #textheader {
 	font-size: 18px;
@@ -559,7 +559,6 @@ input {
     border-radius: 10px;
     padding: 15px;
     margin: 0px;
-    
     background: var(--secondary-color);
 }
 
