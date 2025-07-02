@@ -139,6 +139,7 @@ function updateForecastElements(forecastChartData, forecastSummary) {
         document.getElementById(`cardlow${i}`).textContent = `Low: ${Math.round(forecastSummary[index].low)}\u00B0C`;
         document.getElementById(`cardhumid${i}`).textContent = `Humidity: ${Math.round(forecastSummary[index].humidity)}%`;
         document.getElementById(`cardwind${i}`).textContent = `Wind Speed: ${forecastSummary[index].wind.toFixed(1)} km/h`;
+        document.getElementById(`cardicon${i}`).src = `https://openweathermap.org/img/wn/${forecastSummary[index].icon}@2x.png`;
     }
 }
 
@@ -155,12 +156,23 @@ function summariseDay(forecastDay) {
     let high = forecastDay[0].high;
     let humiditySum = 0;
     let windSum = 0;
+    const targetHour = 12; // Noon hour
+    let closestIcon = forecastDay[0].icon;
+    let smallestDiff = Infinity;
 
     forecastDay.forEach((item) => {
         if (item.low < low) low = item.low; // Find the lowest value; this acts like a min function on item.low.
         if (item.high > high) high = item.high; // Find the highest value; this acts like a max function on item.high.
         humiditySum += item.humidity; // Accumulate humidity to later calculate the average.
         windSum += item.wind; // Accumulate wind speed to later calculate the average.
+
+        //Calculate difference to noon to set the desired icon
+        const hour = item.dt.getHours();
+        const diff = Math.abs(hour - targetHour);
+        if (diff < smallestDiff) {
+            smallestDiff = diff;
+            closestIcon = item.icon;
+        }
     });
 
     return {
@@ -168,7 +180,8 @@ function summariseDay(forecastDay) {
         high,
         humidity: humiditySum / forecastDay.length,
         wind: windSum / forecastDay.length,
-        day: forecastDay[0].dt.getDay()
+        day: forecastDay[0].dt.getDay(),
+        icon: closestIcon
     };
 }
 
