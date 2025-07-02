@@ -535,7 +535,7 @@ input {
 }
  /* carousel styling */
  .flex-item {
-    width: 280px; /* Increased from 200px */
+    width: 200px; 
     text-align: center;
     display: flex;
     flex-wrap: wrap;
@@ -551,6 +551,12 @@ input {
 .weather-card {
     width: 18rem;
     margin: 0 10px;
+}
+
+.carousel-control-prev, 
+.carousel-control-next {
+    width: auto; 
+    opacity: 1; 
 }
 
 .cardir {
