@@ -548,28 +548,33 @@ input {
     margin-top: 20px;
 }
 
-.weather-card {
-    width: 18rem;
-    margin: 0 10px;
-}
-
 .carousel-control-prev, 
 .carousel-control-next {
     width: auto; 
     opacity: 1; 
 }
 
+.weather-card {
+    width: 18rem;
+    margin: 0 10px;
+}
 .cardir {
     width: 100%;
     height: 350px;
     border-radius: 10px;
-    padding: 15px;
+	position: relative;
+    padding: 20px;
     margin: 0px;
     background: var(--secondary-color);
+	border: 10px solid var(--primary-color) !important;
+	overflow: visible;
+	box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+	border-radius: 5%;
+	z-index: 1;
 }
 
 .weekDay {
-	position: relative; 
+	position: static; 
     margin-bottom: 20px; 
     top: auto; 
     left: auto; 
@@ -583,7 +588,19 @@ input {
     font-weight: bold;
     text-align: center; 
     padding: 5px 0; 
+	z-index: 2;
 }
+
+.weather-icon {
+    height: 120px;
+    width: 120px;
+    border-radius: 70%;
+    border: 2px solid var(--primary-color) !important;
+    margin: 0 auto 20px; 
+    display: block;
+	z-index: 1;
+}
+
 
 /* Responsive layout - makes branded logo smaller when size of screen is reduced */
 @media (max-width: 390px) {
