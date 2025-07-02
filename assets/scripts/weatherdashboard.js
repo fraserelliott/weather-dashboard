@@ -61,19 +61,25 @@ function getForecast(lat, lon) {
     fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`)
         .then((response) => response.json())
         .then((responseObj) => updateForecast(responseObj))
-        .catch((error) => createAlert("Error fetching forecast.", 2000));
+        .catch((error) => {
+            console.error(error);
+            createAlert("Error fetching forecast.", 2000);
+        });
 }
 
 function updateForecast(obj) {
     console.log("forecast data", obj);
 
-    const forecastChartData = []; //Array where forecastChartData[0] is today, 1 is tomorrow, etc. For charts.
+    const forecastChartData = []; //Array where forecastChartData[0] is the first forecast day, etc. For charts to store {x,y} where x is time and y is temperature.
     const forecastData = []; //Like chart data but recording data used for the daily summary
 
     let i = 0; //Start at 0
-    let lastDay = new Date().getDate();
+    let lastDay = new Date(obj.list[0].dt * 1000).getDate(); //get the first day stored as a starting point
     forecastChartData[0] = [];
     forecastData[0] = [];
+
+    //The API is providing 3 hour forecast items, this code is to iterate over them and group them into days for summarising and charting.
+
     obj.list.forEach((item) => {
         const dt = new Date(item.dt * 1000); //convert from unix datetime
         const currentDay = dt.getDate();
@@ -106,14 +112,15 @@ function updateForecast(obj) {
     updateForecastElements(forecastChartData, forecastSummary);
 }
 
-function updateForecastElements(forecastChartData, forecastSummary) {   
-    for(let i=1; i<=5; i++) {
-        let index=i-1;
+function updateForecastElements(forecastChartData, forecastSummary) {
+    // Update 5 forecast cards by mapping forecastSummary data to elements with IDs cardday1, cardday2, etc.
+    for (let i = 1; i <= 5; i++) {
+        const index = i - 1;
         document.getElementById(`cardday${i}`).textContent = WEEKDAYS[forecastSummary[index].day];
-        document.getElementById(`cardhigh${i}`).textContent = `High: ${Number.parseInt(forecastSummary[index].high)}\u00B0C`;
-        document.getElementById(`cardlow${i}`).textContent = `Low: ${Number.parseInt(forecastSummary[index].low)}\u00B0C`;
-        document.getElementById(`cardhumid${i}`).textContent = `Humidity: ${Number.parseInt(forecastSummary[index].humidity)}%`;
-        document.getElementById(`cardwind${i}`).textContent = `Wind Speed: ${Number.parseFloat(forecastSummary[index].wind).toFixed(1)} km/h`;
+        document.getElementById(`cardhigh${i}`).textContent = `High: ${Math.round(forecastSummary[index].high)}\u00B0C`;
+        document.getElementById(`cardlow${i}`).textContent = `Low: ${Math.round(forecastSummary[index].low)}\u00B0C`;
+        document.getElementById(`cardhumid${i}`).textContent = `Humidity: ${Math.round(forecastSummary[index].humidity)}%`;
+        document.getElementById(`cardwind${i}`).textContent = `Wind Speed: ${forecastSummary[index].wind.toFixed(1)} km/h`;
     }
 }
 
@@ -124,7 +131,7 @@ function summariseForecast(forecastData) {
 }
 
 function summariseDay(forecastDay) {
-    //This takes an array of data over a given day to summarise it, see updateForecast for properties
+    // This takes an array of data over a given day to summarize it; see updateForecast for properties.
 
     let low = forecastDay[0].low;
     let high = forecastDay[0].high;
@@ -132,10 +139,10 @@ function summariseDay(forecastDay) {
     let windSum = 0;
 
     forecastDay.forEach((item) => {
-        if (item.low < low) low = item.low;
-        if (item.high > high) high = item.high
-        humiditySum += item.humidity;
-        windSum += item.wind;
+        if (item.low < low) low = item.low; // Find the lowest value; this acts like a min function on item.low.
+        if (item.high > high) high = item.high; // Find the highest value; this acts like a max function on item.high.
+        humiditySum += item.humidity; // Accumulate humidity to later calculate the average.
+        windSum += item.wind; // Accumulate wind speed to later calculate the average.
     });
 
     return {
@@ -161,9 +168,9 @@ function createAlert(text, delayMs) {
 }
 
 function toTitleCase(str) {
-  return str
-    .toLowerCase()
-    .split(' ')
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' ');
+    return str
+        .toLowerCase()
+        .split(' ')
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ');
 }
