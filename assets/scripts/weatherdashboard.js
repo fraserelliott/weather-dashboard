@@ -9,6 +9,24 @@ document.getElementById("locationInput").addEventListener("keydown", (event) => 
 const API_KEY = "f23ee9deb4e1a7450f3157c44ed020e1";
 const WEEKDAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
+const weatherEmojis = {
+    Clear: '☀️',
+    Rain: '🌧️',
+    Drizzle: '🌦️',
+    Thunderstorm: '⛈️',
+    Clouds: '☁️',
+    Mist: '🌫️',
+    Fog: '🌫️',
+    Haze: '🌫️',
+    Smoke: '🌫️',
+    Dust: '🌫️',
+    Ash: '🌋',
+    Sand: '🏜️',
+    Squall: '💨',
+    Tornado: '🌪️',
+    Snow: '❄️'
+};
+
 function getLocation() {
     const location = document.getElementById("locationInput").value;
 
@@ -43,7 +61,7 @@ function updateWeather(obj) {
     const hours = date.getHours().toString().padStart(2, "0");
     const minutes = date.getMinutes().toString().padStart(2, "0");
 
-    document.getElementById("currentTime").textContent = `${hours}:${minutes} - ${toTitleCase(document.getElementById("locationInput").value)}`;
+    document.getElementById("currentTime").textContent = `${hours}:${minutes} - ${toTitleCase(document.getElementById("locationInput").value)} ${getWeatherEmoji(obj.weather[0].main)}`;
     document.getElementById("currentTemperature").textContent = `${Number.parseInt(obj.main.temp)}\u00B0C`;
     document.getElementById("weatherSummary").textContent = obj.weather[0].main;
     document.getElementById("feelsLikeTemperature").textContent = `Feels like ${Number.parseInt(obj.main.feels_like)}\u00B0C`;
@@ -173,4 +191,34 @@ function toTitleCase(str) {
         .split(' ')
         .map(word => word.charAt(0).toUpperCase() + word.slice(1))
         .join(' ');
+}
+
+function getWeatherEmoji(main) {
+
+    const defaultWeatherEmojis = {
+        Clear: "☀️",
+        Rain: "🌧️",
+        Drizzle: "🌧️",
+        Thunderstorm: "⛈️",
+        Clouds: "☁️",
+        Mist: "🌫️",
+        Fog: "🌫️",
+        Haze: "🌫️",
+        Smoke: "🌫️",
+        Dust: "🌫️",
+        Ash: "🌫️",
+        Sand: "🌫️",
+        Squall: "🌫️",
+        Tornado: "🌪️",
+        Snow: "❄️"
+    };
+
+    const hour = new Date().getHours();
+    const isNight = hour < 6 || hour >= 20;
+
+    if (main === "Clear" && isNight) {
+        return "🌙";
+    }
+
+    return defaultWeatherEmojis[main] || "";
 }
