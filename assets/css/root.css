@@ -569,18 +569,20 @@ input {
 }
 
 .weekDay {
-    position: relative;
-    margin-bottom: -20px;
-	top: 215px;
-	left: 0;
-	background: var(--secondary-color);
-	z-index: 4;
-	width: 100%;
-	height: 0px;
-	font-size: 16px;
-	font-family: var(--ffamily);
-	color: rgb(151, 147, 147);
-	font-weight: bold
+	position: relative; 
+    margin-bottom: 20px; 
+    top: auto; 
+    left: auto; 
+    background: transparent; 
+    z-index: 1; 
+    width: 100%;
+    height: auto; 
+    font-size: 16px;
+    font-family: var(--ffamily);
+    color: rgb(151, 147, 147);
+    font-weight: bold;
+    text-align: center; 
+    padding: 5px 0; 
 }
 
 /* Responsive layout - makes branded logo smaller when size of screen is reduced */
