@@ -32,22 +32,103 @@ function getWeather(lat, lon) {
     fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`)
         .then((response) => response.json())
         .then((responseObj) => updateWeather(responseObj))
-        .catch((error) => console.error("Fetch error: ", error));
+        .catch((error) => createAlert("Error fetching weather.", 2000));
 }
 
 function updateWeather(obj) {
-    console.log(obj);
+    console.log(`Weather data: ${obj}`);
 
     const date = new Date();
     document.getElementById("currentTime").textContent = `${date.getHours()}:${date.getMinutes()}`;
-    document.getElementById("currentTemperature").textContent = `${obj.main.temp}\u00B0C`;
+    document.getElementById("currentTemperature").textContent = `${Number.parseInt(obj.main.temp)}\u00B0C`;
     document.getElementById("weatherSummary").textContent = obj.weather[0].main;
-    document.getElementById("feelsLikeTemperature").textContent = `Feels like ${obj.main.feels_like}\u00B0C`;
+    document.getElementById("feelsLikeTemperature").textContent = `Feels like ${Number.parseInt(obj.main.feels_like)}\u00B0C`;
     document.getElementById("weatherDescription").textContent = `${obj.weather[0].description}. The high will be ${obj.main.temp_max}\u00B0C`;
     document.getElementById("windSpeed").textContent = `${Number.parseFloat(obj.wind.speed).toFixed(1)} km/h`;
     document.getElementById("humidity").textContent = `${obj.main.humidity}%`;
     document.getElementById("visibility").textContent = `${Number.parseFloat(obj.visibility/1000).toFixed(1)}km`;
     document.getElementById("pressure").textContent = `${obj.main.pressure}hPa`;
+}
+
+function getForecast(lat, lon) {
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`)
+        .then((response) => response.json())
+        .then((responseObj) => updateForecast(responseObj))
+        .catch((error) => createAlert("Error fetching forecast.", 2000));
+}
+
+function updateForecast(obj) {
+    console.log(`Forecast data: ${obj}`);
+    
+    const forecastChartData = []; //Array where forecastChartData[0] is today, 1 is tomorrow, etc. For charts.
+    const forecastData = []; //Like chart data but recording data used for the daily summary
+
+    let i = 0; //Start at 0
+    let lastDay = new Date().getDate();
+    forecastChartData[0] = [];
+    obj.list.forEach((item) => {
+        const dt = new Date(item.dt * 1000); //convert from unix datetime
+        const currentDay = dt.getDate();
+        //work out if it's a new day
+        if (lastDay !== currentDay) {
+            i++; //Move to the next day for storing data
+            forecastChartData[i] = [];
+            forecastData[i] = [];
+            lastDay = currentDay;
+        }
+        
+        forecastChartData[i].push({
+            x: dt.getHours(),
+            y: item.main.temp
+        });
+
+        //store data for this time in the array for this day
+        forecastData[i].push({
+            dt: dt,
+            low: item.main.temp_min,
+            high: item.main.temp_max,
+            humidity: item.main.humidity,
+            wind: item.wind.speed,
+            icon: item.weather[0].icon
+        });
+    });
+
+    const forecastSummary = summariseForecast(forecastData);
+
+    updateForecastElements(forecastChartData, forecastSummary);
+}
+
+function updateForecastElements(forecastChartData, forecastSummary) {
+
+}
+
+function summariseForecast(forecastData) {
+    //This should take an array where forecastData[i] is an array of data over that day, see updateForecast for properties
+
+    return forecastData.map(day => summariseDay(day)); //TODO: add day to summary
+}
+
+function summariseDay(forecastDay) {
+    //This takes an array of data over a given day to summarise it, see updateForecast for properties
+
+    let low = forecastDay[0].low;
+    let high = forecastDay[0].high;
+    let humiditySum = 0;
+    let windSum = 0;
+
+    forecastDay.forEach((item) => {
+        if (item.low < low) low = item.low;
+        if (item.high > high) high = item.high
+        humiditySum += item.humidity;
+        windSum += item.wind;
+    });
+
+    return {
+        low,
+        high,
+        humidity: humiditySum / forecastDay.length,
+        wind: windSum / forecastDay.length
+    };
 }
 
 function createAlert(text, delayMs) {
