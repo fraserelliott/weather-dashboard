@@ -1,3 +1,27 @@
+$(document).ready(function () {
+    $('#bub1').click(function () {
+        $('#Modal1').modal('show');
+    });
+
+    $('#bub2').click(function () {
+        $('#Modal2').modal('show');
+    });
+
+    $('#bub3').click(function () {
+        $('#Modal3').modal('show');
+    });
+
+    $('#bub4').click(function () {
+        $('#Modal4').modal('show');
+    });
+
+    $(document).ready(function () {
+        $('#bub5').click(function () {
+            $('#Modal5').modal('show');
+        });
+    });
+});
+
 document.getElementById("submitBtn").addEventListener("click", getLocation);
 document.getElementById("locationInput").addEventListener("keydown", (event) => {
     if (event.key === "Enter") {
@@ -139,6 +163,7 @@ function updateForecastElements(forecastChartData, forecastSummary) {
         document.getElementById(`cardlow${i}`).textContent = `Low: ${Math.round(forecastSummary[index].low)}\u00B0C`;
         document.getElementById(`cardhumid${i}`).textContent = `Humidity: ${Math.round(forecastSummary[index].humidity)}%`;
         document.getElementById(`cardwind${i}`).textContent = `Wind Speed: ${forecastSummary[index].wind.toFixed(1)} km/h`;
+        console.log(`Setting src for cardicon${i}`);
         document.getElementById(`cardicon${i}`).src = `https://openweathermap.org/img/wn/${forecastSummary[index].icon}@2x.png`;
     }
 }
