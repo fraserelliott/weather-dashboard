@@ -411,3 +411,58 @@ input {
   color: var(--accent-color);
   font-family: var(--fffamily);
 }
+
+/* search card*/
+#searchCard {
+  width: 240px; 
+  padding: 12px 16px;
+  margin: 10px auto; 
+  background: var(--main-card-color);
+  border: 1px solid var(--primary-color) !important;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  color: var(--accent-color);
+  height: 195px; /* Fixed height */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#searchCard label {
+  display: block;
+  font-weight: 0.8em;
+  margin-bottom: 1px;
+  color: var(--accent-color);
+  text-align: center;
+  white-space: nowrap;
+}
+
+#locationInput {
+  width: 90%;
+  padding: 4px 8px;
+  margin: 0 auto 6px;
+  border: 1px solid var(--primary-color);
+  border-radius: 4px;
+  background-color: var(--backgrd2-color);
+  color: var(--accent-color);
+  display:block;
+  text-align: center;
+}
+
+#submitBtn {
+  width: 40%;  
+  padding: 8px;  
+  margin: 0 auto; 
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.9em;  
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+#submitBtn:hover {
+  background-color: var(--primary-color);
+  transform: scale(1.02);
+}
