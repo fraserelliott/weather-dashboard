@@ -253,7 +253,7 @@ input {
             font-family: var(--ffamily);
             padding: 20px;
 			border: 1px solid var(--primary-color) !important;
-            color: var(--accent-color) ;
+            color: var(--accent-color);
         }
 
         .flex-container1 {
@@ -365,7 +365,7 @@ input {
 	box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
 	border-radius: 5%;
 	z-index: 1;
-    color: var(--accent-colour);
+    color: var(--accent-color);
 }
 
 .weekDay {
