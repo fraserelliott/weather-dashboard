@@ -279,7 +279,7 @@ input {
             /* Maintain aspect ratio */
             flex: 1 1 auto;
             /* Allow images to grow and shrink */
-
+            padding: 10px;
         }
 
         .bot-marg {
