@@ -403,3 +403,11 @@ input {
 .erroralert.hide {
   opacity: 0;
 }
+
+/* MODAl STYLE */
+
+.modal-header {
+  background: var(--main-card-color);
+  color: var(--accent-color);
+  font-family: var(--fffamily);
+}
