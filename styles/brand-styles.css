@@ -22,7 +22,7 @@
 }
 
 .sunny {
-  --main-card-color:skyblue;
+  --main-card-color: skyblue;
   --primary-color: #ff9f1c;
   --secondary-color: #ffd166;
   --accent-color: #06aed5;
@@ -31,7 +31,7 @@
 }
 
 .rainy {
-  --main-card-color:#2d3436;
+  --main-card-color: #2d3436;
   --primary-color: #5b737b;
   --secondary-color: #636e72;
   --accent-color: #008080;
@@ -405,4 +405,10 @@ input {
 
 .erroralert.hide {
   opacity: 0;
+}
+
+.banner {
+  width: 0%; /* Makes the image span the full width of the screen */
+  height: auto; /* Maintains the aspect ratio of the image */
+  display: block; /* Removes any extra spacing below the image */
 }
