@@ -8,4 +8,4 @@ IMPORTANT - NOTE -
 
 # ALL CSS WORK and STYLING WORK HAS BEEN A JOINT COLLABORATION BETWEEN ISABELLE and JAMES - Working together through teams calls and submitting updates via GITHUB together. Github reflects this as a single person commiting these updates however this has been a combined effort throughout.
 
-# Fraser has been working on the Java Script.
+# Fraser has been working on the JavaScript.
