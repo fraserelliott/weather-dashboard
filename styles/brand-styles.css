@@ -398,6 +398,19 @@ input {
     display: block;
 	z-index: 1;
 }
+.carousel-indicators [data-bs-target] {
+    background-color: var(--secondary-color);
+   border-radius: 50%;
+   border: none;
+   opacity: 1;
+    transition: all 0.3s ease;
+}
+
+.carousel-indicators .active {
+    background-color: var(--light-blue-colour);
+    opacity: 1;
+    transform: scale(1.2);
+}
 
 .erroralert {
     position: fixed;
