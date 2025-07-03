@@ -1,3 +1,27 @@
+$(document).ready(function () {
+    $('#bub1').click(function () {
+        $('#Modal1').modal('show');
+    });
+
+    $('#bub2').click(function () {
+        $('#Modal2').modal('show');
+    });
+
+    $('#bub3').click(function () {
+        $('#Modal3').modal('show');
+    });
+
+    $('#bub4').click(function () {
+        $('#Modal4').modal('show');
+    });
+
+    $(document).ready(function () {
+        $('#bub5').click(function () {
+            $('#Modal5').modal('show');
+        });
+    });
+});
+
 document.getElementById("submitBtn").addEventListener("click", getLocation);
 document.getElementById("locationInput").addEventListener("keydown", (event) => {
     if (event.key === "Enter") {
@@ -8,6 +32,10 @@ document.getElementById("locationInput").addEventListener("keydown", (event) => 
 
 const API_KEY = "f23ee9deb4e1a7450f3157c44ed020e1";
 const WEEKDAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+const MONTHS = [
+    "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+];
 
 const weatherEmojis = {
     Clear: '☀️',
@@ -134,7 +162,9 @@ function updateForecastElements(forecastChartData, forecastSummary) {
     // Update 5 forecast cards by mapping forecastSummary data to elements with IDs cardday1, cardday2, etc.
     for (let i = 1; i <= 5; i++) {
         const index = i - 1;
-        document.getElementById(`cardday${i}`).textContent = WEEKDAYS[forecastSummary[index].day];
+        console.log(`Querying selector: .cardday${i}`);
+        document.querySelectorAll(`.cardday${i}`).forEach((element) => element.textContent = `${WEEKDAYS[forecastSummary[index].day]} ${addOrdinalSuffix(forecastSummary[index].date)} ${MONTHS[forecastSummary[index].month]}`);
+        // document.getElementById(`cardday${i}`).textContent = WEEKDAYS[forecastSummary[index].day];
         document.getElementById(`cardhigh${i}`).textContent = `High: ${Math.round(forecastSummary[index].high)}\u00B0C`;
         document.getElementById(`cardlow${i}`).textContent = `Low: ${Math.round(forecastSummary[index].low)}\u00B0C`;
         document.getElementById(`cardhumid${i}`).textContent = `Humidity: ${Math.round(forecastSummary[index].humidity)}%`;
@@ -181,6 +211,8 @@ function summariseDay(forecastDay) {
         humidity: humiditySum / forecastDay.length,
         wind: windSum / forecastDay.length,
         day: forecastDay[0].dt.getDay(),
+        month: forecastDay[0].dt.getMonth(),
+        date: forecastDay[0].dt.getDate(),
         icon: closestIcon
     };
 }
@@ -234,4 +266,24 @@ function getWeatherEmoji(main) {
     }
 
     return defaultWeatherEmojis[main] || "";
+}
+
+function addOrdinalSuffix(n) {
+    const k = n % 100; //Pattern repeats every 100 as 11, 12, 13, 111, 112, 113, etc are special cases.
+
+    if (k >= 11 && k <= 13) {
+        return n + "th"; //11th, 12th, 13th, 111th, 112th, 113th, etc
+    }
+
+    const j = n % 10; //Now we base it on the last digit.
+    switch (j) {
+        case 1:
+            return n + "st"; //1st, 21st, 31st, etc
+        case 2:
+            return n + "nd"; //2nd, 22nd, 32nd, etc
+        case 3:
+            return n + "rd"; //3rd, 23rd, 33rd, etc
+        default:
+            return n + "th"; //all others: 4th, 5th, 6th, etc
+    }
 }
