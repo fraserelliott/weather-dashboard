@@ -71,7 +71,20 @@ body {
 	height: 300px;
 	padding: 10px;
 	color: grey;
-} */
+}
+
+.sub-style{
+	margin-top:10px;
+	color: black
+}
+
+.sub-style button{
+	margin-top:10px;
+	color: black;
+	border-radius: 5px;
+	width: 80px;
+	border: solid 1px rgb(156, 154, 154);
+}
 
 
 
@@ -143,15 +156,16 @@ img {
 }
 
 input {
-	width: 120px;
+	width: 140px;
 	background-color: #f5f3f3;
-	color: white;
+	color: rgb(22, 99, 7);
 	padding: auto;
 	margin: auto;
-	border: solid 1px black;
+	border: solid 1px rgb(156, 154, 154);
 	border-radius: 4px;
 	cursor: pointer;
 	line-height: 35px;
+	
 }
 
         .main-flex-container>div {
@@ -242,7 +256,8 @@ input {
             /* top: -35px;*/
             background: var(--main-card-color);
             font-family: var(--ffamily);
-            padding: 20px
+            padding: 20px;
+			border: 1px solid var(--primary-color) !important;
         }
 
         .flex-container1 {
@@ -323,7 +338,18 @@ input {
     background-color: var(--secondary-color);
 	width: auto; 
     opacity: 1;
-	height: 50px
+	height: 60px;
+	position: absolute;
+  	top: 45%;
+  	transform: TranslateY(-50%);position: absolute;
+  	padding: 10px;
+  	backdrop-filter: drop-shadow(2px 4px 6px black);
+	border-radius: 5px;
+}
+
+.carousel {
+	width: 306px;
+	margin: auto;
 }
 
 .weather-card {
@@ -338,7 +364,7 @@ input {
     padding: 20px;
     margin: 0px;
     background: var(--main-card-color);
-	border: 10px solid var(--primary-color) !important;
+	border: 1px solid var(--primary-color) !important;
 	overflow: visible;
 	box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
 	border-radius: 5%;

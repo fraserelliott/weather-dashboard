@@ -40,7 +40,7 @@
                 <p id="currentTime">14:55</p>
                 <h1 id="currentTemperature">32&deg;C</h1>
                 <img id="weatherIcon" src="images/sm-sun-clouds.png" alt="Weather Icon"
-                    style="height: 120px; width: 120px; border-radius: 70%; border: 2px solid rgb(78, 80, 80); margin: 0%; bottom: 10px; left: 0;">
+                    style="height: 120px; width: 120px; border-radius: 70%; border: 2px solid var(--primary-color) !important; margin: 0%; bottom: 10px; left: 0;">
                 <h2 id="weatherSummary">Partly Sunny</h2>
                 <p id="feelsLikeTemperature">Feels like 35deg</p>
                 <p id="weatherDescription">Mostly be sunny skies with highs of 32 deg.</p>
@@ -70,10 +70,10 @@
             </div>
         </div>
 
-        <div id="submit-field">
-            <label for="locationInput">Enter location:</label>
-            <input id="locationInput">
-            <button id="submitBtn">Submit</button>
+        <div class="sub-style" id="submit-field">
+            <label for="locationInput">Enter Town/City:</label><br>
+            <input id="locationInput"><br>
+            <button id="submitBtn">Search</button>
         </div>
     </section>
 
