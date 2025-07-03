@@ -227,20 +227,32 @@ function updateForecastElements(forecastChartData, forecastSummary) {
             type: "line",
             data: {
                 datasets: [{
-                    label: 'Forecast Temperature',
                     data: forecastChartData[i],
                     fill: false,
-                    showLine: true
+                    showLine: true,
+                    label: ""
                 }]
             },
             options: {
                 scales: {
                     x: {
-                        type: 'linear', // important for numeric x-axis
-                        position: 'bottom',
+                        type: "linear", // important for numeric x-axis
+                        position: "bottom",
+                        min: 0,
+                        max: 24,
+                        title: {
+                            display: true,
+                            text: "Hour of Day"
+                        }
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: "Forecast Temperature (\u00B0C)"
                     },
-                    y: {
-                        beginAtZero: true,
+                    legend: {
+                        display: false
                     }
                 }
             }
