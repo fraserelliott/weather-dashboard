@@ -210,14 +210,41 @@ function updateForecastElements(forecastChartData, forecastSummary) {
     // Update 5 forecast cards by mapping forecastSummary data to elements with IDs cardday1, cardday2, etc.
     for (let i = 1; i <= 5; i++) {
         const index = i - 1;
-        console.log(`Querying selector: .cardday${i}`);
+
+        //card data elements
         document.querySelectorAll(`.cardday${i}`).forEach((element) => element.textContent = `${WEEKDAYS[forecastSummary[index].day]} ${addOrdinalSuffix(forecastSummary[index].date)} ${MONTHS[forecastSummary[index].month]}`);
-        // document.getElementById(`cardday${i}`).textContent = WEEKDAYS[forecastSummary[index].day];
         document.getElementById(`cardhigh${i}`).textContent = `High: ${Math.round(forecastSummary[index].high)}\u00B0C`;
         document.getElementById(`cardlow${i}`).textContent = `Low: ${Math.round(forecastSummary[index].low)}\u00B0C`;
         document.getElementById(`cardhumid${i}`).textContent = `Humidity: ${Math.round(forecastSummary[index].humidity)}%`;
         document.getElementById(`cardwind${i}`).textContent = `Wind Speed: ${forecastSummary[index].wind.toFixed(1)} km/h`;
         document.getElementById(`cardicon${i}`).src = `https://openweathermap.org/img/wn/${forecastSummary[index].icon}@2x.png`;
+
+        //charts
+
+        console.log(forecastChartData[i]);
+        const ctx = document.getElementById(`forecastchart${i}`).getContext("2d");
+        const chart = new Chart(ctx, {
+            type: "line",
+            data: {
+                datasets: [{
+                    label: 'Forecast Temperature',
+                    data: forecastChartData[i],
+                    fill: false,
+                    showLine: true
+                }]
+            },
+            options: {
+                scales: {
+                    x: {
+                        type: 'linear', // important for numeric x-axis
+                        position: 'bottom',
+                    },
+                    y: {
+                        beginAtZero: true,
+                    }
+                }
+            }
+        });
     }
 }
 
