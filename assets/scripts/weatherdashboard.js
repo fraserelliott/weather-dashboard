@@ -39,6 +39,8 @@ const MONTHS = [
 
 let cityName = "";
 
+const forecastCharts = [];
+
 const weatherEmojis = {
     Clear: '☀️',
     Rain: '🌧️',
@@ -221,9 +223,15 @@ function updateForecastElements(forecastChartData, forecastSummary) {
 
         //charts
 
+        //destroy charts first to replace
+        if (forecastCharts[i]) {
+            forecastCharts[i].destroy();
+            forecastCharts[i] = null;
+        }
+        
         console.log(forecastChartData[i]);
         const ctx = document.getElementById(`forecastchart${i}`).getContext("2d");
-        const chart = new Chart(ctx, {
+        forecastCharts[i] = new Chart(ctx, {
             type: "line",
             data: {
                 datasets: [{
