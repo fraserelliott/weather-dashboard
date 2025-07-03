@@ -3,17 +3,13 @@
  :root {
             --main-card-color: #b6edb0;
             --primary-color: #44aa00ff;
-            /* Hardcoded red */
             --secondary-color: #bcd35fff;
-            /* Hardcoded white */
             --accent-color: #00b6a1fe;
             --ffamily: "monserat", Arial, Helvetica, sans-serif;
             /* Hardcoded font family */
             --backgrd-color: black;
             /* Hardcoded background color */
             --about-color: white;
-            /* Hardcoded Gradient */
-            --gradient-back: background-image: linear-gradient(to right, #2cc7cdfe, #2cc7cdfe);
         }
 
 .dark-mode {
