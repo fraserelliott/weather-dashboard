@@ -249,9 +249,9 @@ input {
 }
 
 .img-style img {
-  max-width: 450px;
+  /*max-width: 450px;
   /* Maintain aspect ratio */
-  flex: 1 1 auto;
+  /*flex: 1 1 auto;
   /* Allow images to grow and shrink */
   padding: 10px;
 }
