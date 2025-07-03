@@ -37,6 +37,8 @@ const MONTHS = [
     "July", "August", "September", "October", "November", "December"
 ];
 
+let cityName = "";
+
 const weatherEmojis = {
     Clear: '☀️',
     Rain: '🌧️',
@@ -55,15 +57,61 @@ const weatherEmojis = {
     Snow: '❄️'
 };
 
-function getLocation() {
-    const location = document.getElementById("locationInput").value;
+weatherGeolocation();
 
-    if (!location) {
+function weatherGeolocation() {
+    if (navigator.geolocation) {
+        console.log("using geolocation data");
+        navigator.geolocation.getCurrentPosition((position) => {
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
+
+            fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`)
+                .then(response => {
+                    if (!response.ok) throw new Error('Reverse geocode response not OK');
+                    return response.json();
+                })
+                .then(data => {
+                    const townName = data.address.city || data.address.town || data.address.village;
+                    if (!townName) throw new Error('No town name found');
+                    console.log("Detected location:", townName);
+                    cityName = townName;
+                    // Now call getWeather since we have a town name
+                    getWeather(lat, lon);
+                })
+                .catch(err => {
+                    console.error("Failed to get town name, aborting weather fetch:", err);
+                    cityName = "London";
+                    getWeather(51.5073219, -0.1276474);
+                });
+        },
+            (error) => {
+                if (error.code === error.PERMISSION_DENIED) {
+                    console.log("User denied geolocation permission or it’s blocked");
+                    // fallback logic here - call getWeather with default location
+                    cityName = "London";
+                    getWeather(51.5073219, -0.1276474);
+                } else {
+                    console.log("Geolocation error:", error.message);
+                }
+            }
+        );
+    } else {
+        console.log("geolocation isn't available");
+        cityName = "London";
+        getWeather(51.5073219, -0.1276474);
+    }
+}
+
+function getLocation() {
+    cityName = document.getElementById("locationInput").value;
+
+    if (!cityName) {
         createAlert("Please enter a location", 2000);
         return;
     }
 
-    fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=1&appid=${API_KEY}`)
+    fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${API_KEY}`)
         .then((response) => response.json())
         .then((responseObj) => {
             const lat = responseObj[0].lat;
@@ -89,7 +137,7 @@ function updateWeather(obj) {
     const hours = date.getHours().toString().padStart(2, "0");
     const minutes = date.getMinutes().toString().padStart(2, "0");
 
-    document.getElementById("currentTime").textContent = `${hours}:${minutes} - ${toTitleCase(document.getElementById("locationInput").value)} ${getWeatherEmoji(obj.weather[0].main)}`;
+    document.getElementById("currentTime").textContent = `${hours}:${minutes} - ${toTitleCase(cityName)} ${getWeatherEmoji(obj.weather[0].main)}`;
     document.getElementById("currentTemperature").textContent = `${Number.parseInt(obj.main.temp)}\u00B0C`;
     document.getElementById("weatherSummary").textContent = obj.weather[0].main;
     document.getElementById("feelsLikeTemperature").textContent = `Feels like ${Number.parseInt(obj.main.feels_like)}\u00B0C`;
