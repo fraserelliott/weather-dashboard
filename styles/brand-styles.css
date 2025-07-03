@@ -6,7 +6,7 @@
             /* Hardcoded red */
             --secondary-color: #bcd35fff;
             /* Hardcoded white */
-            --accent-color: #b3b3b3ff;
+            --accent-color: #00b6a1fe;
             --ffamily: "monserat", Arial, Helvetica, sans-serif;
             /* Hardcoded font family */
             --backgrd-color: black;
@@ -14,7 +14,6 @@
             --about-color: white;
             /* Hardcoded Gradient */
             --gradient-back: background-image: linear-gradient(to right, #2cc7cdfe, #2cc7cdfe);
-            --light-blue-colour:#00b6a1fe;
         }
 
 .dark-mode {
@@ -228,7 +227,7 @@ input {
         }
 
         .main-flex-container-inner>div {
-            background-color: #4480b1;
+            background-color: var(--accent-color);
             width: 100px;
             margin-left: 1px;
             text-align: center;
@@ -258,6 +257,7 @@ input {
             font-family: var(--ffamily);
             padding: 20px;
 			border: 1px solid var(--primary-color) !important;
+            color: var(--accent-color) ;
         }
 
         .flex-container1 {
@@ -369,7 +369,7 @@ input {
 	box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
 	border-radius: 5%;
 	z-index: 1;
-    color: var(--light-blue-colour);
+    color: var(--accent-colour);
 }
 
 .weekDay {
@@ -383,7 +383,7 @@ input {
     height: auto; 
     font-size: 16px;
     font-family: var(--ffamily);
-    color: var(--light-blue-colour);
+    color: var(--accent-color);
     font-weight: bold;
     text-align: center; 
     padding: 5px 0; 
@@ -408,7 +408,7 @@ input {
 }
 
 .carousel-indicators .active {
-    background-color: var(--light-blue-colour);
+    background-color: var(--accent-color);
     opacity: 1;
     transform: scale(1.2);
 }
