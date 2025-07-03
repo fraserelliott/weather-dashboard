@@ -14,7 +14,7 @@
             --about-color: white;
             /* Hardcoded Gradient */
             --gradient-back: background-image: linear-gradient(to right, #2cc7cdfe, #2cc7cdfe);
-
+            --light-blue-colour:#00b6a1fe;
         }
 
 .dark-mode {
