@@ -1,4 +1,4 @@
-# challenge-5 Weeather App
+# challenge-5 Weather App
 
 Challenge for week 5 -
 
