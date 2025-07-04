@@ -139,6 +139,10 @@ function updateWeather(obj) {
     const hours = date.getHours().toString().padStart(2, "0");
     const minutes = date.getMinutes().toString().padStart(2, "0");
 
+    //Show current weather and forecast now data has loaded
+    document.getElementById("currentweathercard").classList.remove("d-none");
+    document.getElementById("weatherCarousel").classList.remove("d-none");
+
     document.getElementById("currentTime").textContent = `${hours}:${minutes} - ${toTitleCase(cityName)} ${getWeatherEmoji(obj.weather[0].main)}`;
     document.getElementById("currentTemperature").textContent = `${Number.parseInt(obj.main.temp)}\u00B0C`;
     document.getElementById("weatherSummary").textContent = obj.weather[0].main;

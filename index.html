@@ -25,7 +25,7 @@
 
 <body id="landingPage" data-target=".navbar" data-offset="60">
     <!------------------------------------------- CONTAINER (TEAM PORTALS) -------------------------------------------------------------->
-    <header style="background-color: var(--backgrd2-color);">
+    <header>
 
         <div class="img-style py-sm-0">
 
@@ -43,13 +43,12 @@
             <button id="submitBtn">Search</button>
         </div>
 
-        <div class="flex-container1 my-3">
+        <div id="currentweathercard" class="flex-container1 my-4 d-none">
 
             <div class="card-main">
                 <p id="currentTime">14:55</p>
                 <h1 id="currentTemperature">32&deg;C</h1>
-                <img class="banner" id="weatherIcon" src="images/sm-sun-clouds.png" alt="Weather Icon"
-                    style="height: 120px; width: 120px; border-radius: 70%; border: 2px solid var(--primary-color) !important; margin: 0%; bottom: 10px; left: 0;">
+                <img class="weather-icon" id="weatherIcon" alt="Weather Icon">
                 <h2 id="weatherSummary">Partly Sunny</h2>
                 <p id="feelsLikeTemperature">Feels like 35deg</p>
                 <p id="weatherDescription">Mostly be sunny skies with highs of 32 deg.</p>
@@ -81,7 +80,7 @@
     </section>
 
     <section>
-        <div id="weatherCarousel" class="carousel slide my-2">
+        <div id="weatherCarousel" class="carousel slide my-4 d-none">
             <div class="carousel-inner">
                 <!-- CARD 1 -->
                 <div class="carousel-item active" id="bub1">
@@ -89,11 +88,11 @@
                         <div class="flex-item weather-card">
                             <div class="cardir">
                                 <p class="weekDay cardday1">Day 1</p>
-                                <div class="icons-style" style="padding-top: 0%">
-                                    <img src="images/sm-sun-clouds.png" class="weather-icon" alt="Day 1 Weather"
+                                <div class="icons-style weatherIcon">
+                                    <img class="weather-icon" alt="Day 1 Weather"
                                         id="cardicon1">
                                 </div>
-                                <div style="text-align: center; margin-top: 10px;">
+                                <div class="carousel-main">
                                     <p id="cardhigh1"></p>
                                     <p id="cardlow1"></p>
                                     <p id="cardhumid1"></p>
@@ -110,11 +109,11 @@
                         <div class="flex-item weather-card">
                             <div class="cardir">
                                 <p class="weekDay cardday2">Day 2</p>
-                                <div class="icons-style" style="padding-top: 0%">
-                                    <img src="images/sm-sun-clouds.png" class="weather-icon" alt="Day 2 Weather"
+                                <div class="icons-style">
+                                    <img class="weather-icon" alt="Day 2 Weather"
                                         id="cardicon2">
                                 </div>
-                                <div style="text-align: center; margin-top: 10px;">
+                                <div class="carousel-main">
                                     <p id="cardhigh2"></p>
                                     <p id="cardlow2"></p>
                                     <p id="cardhumid2"></p>
@@ -131,11 +130,11 @@
                         <div class="flex-item weather-card">
                             <div class="cardir">
                                 <p class="weekDay cardday3">Day 3</p>
-                                <div class="icons-style" style="padding-top: 0%">
-                                    <img src="images/sm-sun-clouds.png" class="weather-icon" alt="Day 3 Weather"
+                                <div class="icons-style">
+                                    <img class="weather-icon" alt="Day 3 Weather"
                                         id="cardicon3">
                                 </div>
-                                <div style="text-align: center; margin-top: 10px;">
+                                <div class="carousel-main">
                                     <p id="cardhigh3"></p>
                                     <p id="cardlow3"></p>
                                     <p id="cardhumid3"></p>
@@ -152,11 +151,11 @@
                         <div class="flex-item weather-card">
                             <div class="cardir">
                                 <p class="weekDay cardday4">Day 4</p>
-                                <div class="icons-style" style="padding-top: 0%">
-                                    <img src="images/sm-sun-clouds.png" class="weather-icon" alt=" Day 4 Weather"
+                                <div class="icons-style">
+                                    <img class="weather-icon" alt=" Day 4 Weather"
                                         id="cardicon4">
                                 </div>
-                                <div style="text-align: center; margin-top: 10px;">
+                                <div class="carousel-main">
                                     <p id="cardhigh4"></p>
                                     <p id="cardlow4"></p>
                                     <p id="cardhumid4"></p>
@@ -173,11 +172,11 @@
                         <div class="flex-item weather-card">
                             <div class="cardir">
                                 <p class="weekDay cardday5">Day 5</p>
-                                <div class="icons-style" style="padding-top: 0%">
-                                    <img src="images/sm-sun-clouds.png" class="weather-icon" alt="Day 5 Weather"
+                                <div class="icons-style">
+                                    <img class="weather-icon" alt="Day 5 Weather"
                                         id="cardicon5">
                                 </div>
-                                <div style="text-align: center; margin-top: 10px;">
+                                <div class="carousel-main">
                                     <p id="cardhigh5"></p>
                                     <p id="cardlow5"></p>
                                     <p id="cardhumid5"></p>
@@ -196,7 +195,7 @@
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
             </button>
             <!-- Carousel Indicators-->
-            <div class="carousel-indicators" style="position: static; display: inline-block;">
+            <div class="carousel-indicators">
                 <button type="button" data-bs-target="#weatherCarousel" class="active" aria-current="true"
                     data-bs-slide-to="0"></button>
                 <button type="button" data-bs-target="#weatherCarousel" data-bs-slide-to="1"></button>
